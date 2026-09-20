@@ -1,0 +1,21 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+[[mods]]
+modId="sirin5dwaves"
+version="1.0.0"
+displayName="Sirin 5D Rising Mesh Waves"
+authors="huter413"
+description='Real geometric animated water-wave mesh renderer for Forge 1.20.1.'
+[[dependencies.sirin5dwaves]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.sirin5dwaves]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1]"
+ordering="NONE"
+side="BOTH"
