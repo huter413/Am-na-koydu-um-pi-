@@ -11,23 +11,36 @@ base { archivesName = 'sirin-5d-waves' }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-minecraft { mappings channel: 'official', version: '1.20.1' }
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
 
-repositories { maven { url = 'https://maven.minecraftforge.net' } }
+    runs {
+        configureEach {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                sirin5dwaves {
+                    source sourceSets.main
+                }
+            }
+        }
 
-dependencies { minecraft 'net.minecraftforge:forge:1.20.1-47.3.0' }
+        client { }
+        server { }
+    }
+}
 
-jar { finalizedBy 'reobfJar' }
+repositories {
+    maven { url = 'https://maven.minecraftforge.net' }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
+}
+
+jar {
+    finalizedBy 'reobfJar'
+}
 
 sourceSets.main.resources.srcDir 'src/generated/resources'
-
-runs {
-    configureEach {
-        workingDirectory project.file('run')
-        property 'forge.logging.markers', 'REGISTRIES'
-        property 'forge.logging.console.level', 'debug'
-        mods { sirin5dwaves { source sourceSets.main } }
-    }
-    client { }
-    server { }
-}

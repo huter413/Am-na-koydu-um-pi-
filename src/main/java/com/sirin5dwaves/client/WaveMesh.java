@@ -1,0 +1,3 @@
+package com.sirin5dwaves.client;
+import com.mojang.blaze3d.vertex.PoseStack; import com.mojang.blaze3d.vertex.VertexConsumer;
+public final class WaveMesh { private WaveMesh(){} public static void emit(VertexConsumer v,PoseStack.Pose p,int cells,float size,double t){for(int iz=0;iz<cells;iz++)for(int ix=0;ix<cells;ix++){float x0=(ix/(float)cells-.5f)*size,x1=((ix+1)/(float)cells-.5f)*size,z0=(iz/(float)cells-.5f)*size,z1=((iz+1)/(float)cells-.5f)*size; put(v,p,x0,z0,t);put(v,p,x1,z0,t);put(v,p,x1,z1,t);put(v,p,x0,z0,t);put(v,p,x1,z1,t);put(v,p,x0,z1,t);}} private static void put(VertexConsumer v,PoseStack.Pose p,float x,float z,double t){v.vertex(p.pose(),x,WaveMath.height(x,z,t),z).color(.12f,.42f,.82f,.72f).endVertex();}}
